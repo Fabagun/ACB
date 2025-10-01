@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AzerothCore AutoBuilder Configuration",
+  "description": "Configuration file for AzerothCore Windows AutoBuilder",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Configuration file version",
+      "default": "2.0.0"
+    },
+    "paths": {
+      "type": "object",
+      "description": "Directory paths for the build process",
+      "properties": {
+        "downloadFolder": {
+          "type": "string",
+          "description": "Location for downloaded installers",
+          "default": "C:\\WowServer\\ACdownloads\\"
+        },
+        "baseLocation": {
+          "type": "string",
+          "description": "Base location for Git repositories",
+          "default": "C:\\WowServer\\SourceGit\\"
+        },
+        "buildFolder": {
+          "type": "string",
+          "description": "Location for compiled binaries",
+          "default": "C:\\WowServer\\Compile\\"
+        },
+        "personalServerFolder": {
+          "type": "string",
+          "description": "Location for personal server/repack",
+          "default": "C:\\WowServer\\Server\\"
+        }
+      },
+      "required": ["downloadFolder", "baseLocation", "buildFolder", "personalServerFolder"]
+    },
+    "database": {
+      "type": "object",
+      "description": "Database configuration",
+      "properties": {
+        "rootPassword": {
+          "type": "string",
+          "description": "MySQL root password (will be prompted if not set)",
+          "minLength": 8
+        },
+        "port": {
+          "type": "integer",
+          "description": "MySQL port",
+          "default": 3306,
+          "minimum": 1024,
+          "maximum": 65535
+        }
+      },
+      "required": ["port"]
+    },
+    "downloads": {
+      "type": "object",
+      "description": "Download configuration",
+      "properties": {
+        "downloadData": {
+          "type": "boolean",
+          "description": "Download maps data from GitHub",
+          "default": true
+        },
+        "dataUrl": {
+          "type": "string",
+          "description": "URL for AzerothCore data download",
+          "default": "https://github.com/wowgaming/client-data/releases/download/v12/data.zip"
+        }
+      },
+      "required": ["downloadData"]
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "Dependency versions and URLs",
+      "properties": {
+        "git": {
+          "type": "object",
+          "properties": {
+            "minVersion": "2.45.0",
+            "url": "https://api.github.com/repos/git-for-windows/git/releases/latest",
+            "checksum": null
+          }
+        },
+        "cmake": {
+          "type": "object",
+          "properties": {
+            "minVersion": "3.27.0",
+            "url": "https://github.com/Kitware/CMake/releases/download/v3.27.9/cmake-3.27.9-windows-x86_64.msi",
+            "checksum": "sha256:abc123..."
+          }
+        },
+        "visualStudio": {
+          "type": "object",
+          "properties": {
+            "minVersion": "17.0.0",
+            "url": "https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=17",
+            "checksum": null
+          }
+        },
+        "openssl": {
+          "type": "object",
+          "properties": {
+            "minVersion": "3.0.0",
+            "url": "https://slproweb.com/download/Win64OpenSSL-3_3_1.exe",
+            "checksum": "sha256:def456..."
+          }
+        },
+        "mysql": {
+          "type": "object",
+          "properties": {
+            "minVersion": "8.0.0",
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.4/mysql-8.4.0-winx64.zip",
+            "checksum": "sha256:ghi789..."
+          }
+        },
+        "boost": {
+          "type": "object",
+          "properties": {
+            "minVersion": "1.78.0",
+            "url": "https://sourceforge.net/projects/boost/files/boost-binaries/1.84.0/boost_1_84_0-msvc-14.3-64.exe/download",
+            "checksum": "sha256:jkl012..."
+          }
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "description": "Build configuration",
+      "properties": {
+        "configuration": {
+          "type": "string",
+          "enum": ["Debug", "Release"],
+          "default": "Release"
+        },
+        "parallelJobs": {
+          "type": "integer",
+          "description": "Number of parallel build jobs",
+          "default": 4,
+          "minimum": 1,
+          "maximum": 16
+        }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "description": "Logging configuration",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["Debug", "Info", "Warning", "Error"],
+          "default": "Info"
+        },
+        "logFile": {
+          "type": "string",
+          "description": "Path to log file",
+          "default": "C:\\WowServer\\Logs\\AzerothCore-Builder.log"
+        },
+        "maxLogSize": {
+          "type": "integer",
+          "description": "Maximum log file size in MB",
+          "default": 10
+        }
+      }
+    }
+  },
+  "required": ["version", "paths", "database", "downloads", "dependencies", "build", "logging"]
+}
