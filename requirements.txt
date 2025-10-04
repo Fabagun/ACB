@@ -1,0 +1,17 @@
+# AzerothCore Builder (ACB) - Python Requirements
+# 
+# Core dependencies for running ACB
+# Install with: pip install -r requirements.txt
+
+# GUI Framework (usually included with Python, but specified for completeness)
+# tkinter is part of Python standard library on most platforms
+
+# Image processing library for handling icons and graphics
+Pillow>=9.0.0
+
+# System and process utilities for monitoring builds and system status
+psutil>=5.9.0
+
+# Optional: Enhanced image processing (if advanced graphics features needed)
+# Uncomment if you need advanced image manipulation
+# opencv-python>=4.5.0
