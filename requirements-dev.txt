@@ -1,0 +1,73 @@
+# AzerothCore Builder (ACB) - Development Requirements
+# 
+# Additional dependencies for ACB development, testing, and building
+# Install with: pip install -r requirements-dev.txt
+#
+# Note: Install base requirements first: pip install -r requirements.txt
+
+# Building and Packaging
+pyinstaller>=5.7.0          # Create standalone executables
+auto-py-to-exe>=2.25.0      # GUI for PyInstaller (optional)
+
+# Code Quality and Linting
+black>=22.10.0               # Code formatter
+flake8>=6.0.0               # Linting and style checking
+isort>=5.11.0               # Import sorting
+pylint>=2.15.0              # Advanced linting
+mypy>=0.991                 # Type checking
+
+# Testing Framework
+pytest>=7.2.0              # Testing framework
+pytest-cov>=4.0.0          # Coverage reporting
+pytest-mock>=3.10.0        # Mocking utilities
+pytest-xvfb>=2.0.0         # Virtual display for GUI testing (Linux)
+pytest-qt>=4.2.0           # Qt/tkinter testing utilities
+
+# Documentation
+sphinx>=5.3.0              # Documentation generator
+sphinx-rtd-theme>=1.1.0    # Read the Docs theme
+myst-parser>=0.18.0        # Markdown support for Sphinx
+
+# Development Utilities
+pre-commit>=2.20.0         # Git hooks for code quality
+tox>=4.0.0                 # Testing across Python versions
+bump2version>=1.0.0        # Version bumping utility
+
+# Performance and Profiling
+memory-profiler>=0.60.0    # Memory usage profiling
+line-profiler>=4.0.0       # Line-by-line profiling
+py-spy>=0.3.0              # Sampling profiler
+
+# Security Scanning
+bandit>=1.7.0              # Security vulnerability scanner
+safety>=2.3.0              # Dependency vulnerability scanner
+
+# Build Tools and Utilities
+wheel>=0.38.0              # Wheel package format
+twine>=4.0.0               # Package uploading utility
+setuptools>=65.0.0         # Package building
+pip-tools>=6.12.0          # Dependency management
+
+# Git and Version Control Utilities
+gitpython>=3.1.0           # Git operations in Python
+pre-commit-hooks>=4.4.0    # Additional pre-commit hooks
+
+# Optional: Advanced Development Tools
+# Uncomment if needed for advanced development
+
+# Jupyter and Interactive Development
+# jupyter>=1.0.0
+# ipython>=8.0.0
+# notebook>=6.5.0
+
+# Database Tools (for testing database operations)
+# sqlalchemy>=1.4.0
+# pymysql>=1.0.0
+
+# Network and HTTP Testing
+# requests-mock>=1.10.0
+# responses>=0.22.0
+
+# Windows-specific Development (uncomment on Windows)
+# pywin32>=305               # Windows API access
+# pywin32-ctypes>=0.2.0     # Windows COM support
