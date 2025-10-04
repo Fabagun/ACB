@@ -1,0 +1,57 @@
+# AzerothCore AutoBuilder - Git Ignore File
+
+# Logs
+*.log
+Logs/
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# PowerShell
+*.ps1.bak
+*.psm1.bak
+
+# Build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Downloaded files (optional - uncomment if you don't want to track downloads)
+# ACdownloads/
+# SourceGit/
+# Compile/
+# Server/
+
+# Configuration files with sensitive data
+# Uncomment if you want to exclude config files with passwords
+# AzerothCore-Config.json
