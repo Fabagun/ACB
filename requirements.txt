@@ -1,0 +1,34 @@
+# Core GUI framework
+tkinter  # Built-in with Python
+
+# Image processing
+Pillow>=9.0.0
+
+# System monitoring and process management
+psutil>=5.8.0
+
+# HTTP requests and file downloads
+urllib3>=1.26.0
+
+# Standard library dependencies (included with Python)
+# - os
+# - sys
+# - subprocess
+# - winreg (Windows only)
+# - platform
+# - json
+# - pathlib
+# - threading
+# - tempfile
+# - shutil
+# - time
+# - random
+# - zipfile
+
+# Optional: For building executables
+# pyinstaller>=5.0.0
+
+# Development dependencies (optional)
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=4.0.0
