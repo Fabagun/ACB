@@ -1,0 +1,379 @@
+# Requirements for AzerothCore Builder (ACB)
+
+## Python Dependencies
+
+### Core Requirements
+```
+tkinter>=8.6              # GUI framework (usually included with Python)
+pillow>=8.0.0             # Image processing for icons and graphics
+psutil>=5.8.0             # System process monitoring
+```
+
+### Development Dependencies
+```
+pyinstaller>=5.0          # Executable packaging
+pytest>=7.0.0             # Testing framework
+pytest-cov>=4.0.0         # Test coverage reporting
+pytest-mock>=3.0.0        # Mocking utilities
+black>=22.0.0             # Code formatting
+flake8>=5.0.0             # Linting and style checking
+mypy>=0.991               # Type checking
+```
+
+### Optional Dependencies
+```
+sphinx>=5.0.0             # Documentation generation
+sphinx-rtd-theme>=1.0.0   # Documentation theme
+```
+
+## System Requirements
+
+### Operating System
+- **Windows 10** (Version 1809 or later)
+- **Windows 11** (All versions supported)
+- **Architecture**: x64 (64-bit) required
+
+### Hardware Requirements
+- **CPU**: Intel Core i5 or AMD Ryzen 5 (minimum)
+- **RAM**: 8 GB minimum, 16 GB recommended
+- **Storage**: 50 GB free space for full build
+- **Network**: Broadband internet connection
+
+## Build Tool Dependencies
+
+### Required Software (Auto-detected by ACB)
+
+#### Git for Windows
+- **Version**: 2.44.0 or later
+- **Purpose**: Version control and repository management
+- **Download**: https://git-scm.com/download/win
+- **Registry Keys**: 
+  - `SOFTWARE\GitForWindows`
+  - `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Git_is1`
+- **Common Paths**:
+  - `C:\Program Files\Git\bin\git.exe`
+  - `C:\Program Files (x86)\Git\bin\git.exe`
+
+#### Boost C++ Libraries
+- **Version**: 1.78.0 - 1.84.0 (any version in range)
+- **Purpose**: C++ library dependencies for AzerothCore
+- **Download**: https://www.boost.org/users/download/
+- **Installation Path**: `C:\local\boost_1_XX_0\`
+- **Registry Keys**: 
+  - `SOFTWARE\Boost`
+- **Common Paths**:
+  - `C:\local\boost_1_78_0`
+  - `C:\local\boost_1_79_0`
+  - `C:\local\boost_1_80_0`
+  - `C:\local\boost_1_81_0`
+  - `C:\local\boost_1_82_0`
+  - `C:\local\boost_1_83_0`
+  - `C:\local\boost_1_84_0`
+
+#### MySQL Server
+- **Version**: 8.0 or later
+- **Purpose**: Database backend for game data
+- **Download**: https://dev.mysql.com/downloads/mysql/
+- **Registry Keys**:
+  - `SOFTWARE\MySQL AB`
+  - `SOFTWARE\WOW6432Node\MySQL AB`
+- **Common Paths**:
+  - `C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe`
+  - `C:\MySQL\bin\mysql.exe`
+
+#### OpenSSL
+- **Version**: 3.5.2 or later
+- **Purpose**: Cryptographic library for secure connections
+- **Download**: https://slproweb.com/products/Win32OpenSSL.html
+- **Registry Keys**:
+  - `SOFTWARE\OpenSSL`
+- **Common Paths**:
+  - `C:\Program Files\OpenSSL-Win64\bin\openssl.exe`
+  - `C:\Program Files (x86)\OpenSSL-Win32\bin\openssl.exe`
+
+#### CMake
+- **Version**: 3.28.1 or later
+- **Purpose**: Build system generator
+- **Download**: https://cmake.org/download/
+- **Registry Keys**:
+  - `SOFTWARE\Kitware\CMake`
+- **Common Paths**:
+  - `C:\Program Files\CMake\bin\cmake.exe`
+  - `C:\Program Files (x86)\CMake\bin\cmake.exe`
+
+#### Visual Studio 2022
+- **Edition**: Community (free), Professional, or Enterprise
+- **Purpose**: C++ compiler and build environment
+- **Download**: https://visualstudio.microsoft.com/downloads/
+- **Registry Keys**:
+  - `SOFTWARE\Microsoft\VisualStudio\Setup\VS`
+  - `SOFTWARE\WOW6432Node\Microsoft\VisualStudio\Setup\VS`
+- **Common Paths**:
+  - `C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe`
+  - `C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe`
+  - `C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\devenv.exe`
+
+**Required Workloads**:
+- Desktop development with C++
+- C++ CMake tools for Visual Studio
+- Windows 10/11 SDK (latest version)
+
+### Optional Software
+
+#### HeidiSQL
+- **Version**: 12.11 or later
+- **Purpose**: Database management and query tool
+- **Download**: https://www.heidisql.com/download.php
+- **Alternative**: MySQL Workbench, phpMyAdmin, or any MySQL client
+- **Registry Keys**:
+  - `SOFTWARE\HeidiSQL`
+  - `SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\HeidiSQL`
+- **Common Paths**:
+  - `C:\Program Files\HeidiSQL\heidisql.exe`
+  - `C:\Program Files (x86)\HeidiSQL\heidisql.exe`
+  - `C:\HeidiSQL\heidisql.exe`
+
+## Python Environment Setup
+
+### Option 1: System Python (Recommended for Development)
+```bash
+# Install Python 3.8+ from python.org
+python --version
+
+# Install required packages
+pip install tkinter pillow psutil
+
+# Install development packages (optional)
+pip install pyinstaller pytest pytest-cov black flake8
+```
+
+### Option 2: Virtual Environment (Recommended for Isolation)
+```bash
+# Create virtual environment
+python -m venv acb_env
+
+# Activate virtual environment
+# Windows:
+acb_env\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Option 3: Conda Environment (Alternative)
+```bash
+# Create conda environment
+conda create -n acb python=3.11
+
+# Activate environment
+conda activate acb
+
+# Install packages
+conda install tkinter pillow psutil
+pip install pyinstaller  # Not available in conda
+```
+
+## Development Setup
+
+### IDE Requirements
+- **Visual Studio Code** (Recommended)
+  - Python extension
+  - GitLens extension
+  - Pylint extension
+- **PyCharm** (Alternative)
+  - Community or Professional edition
+- **Sublime Text** with Python packages (Alternative)
+
+### Git Configuration
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --global init.defaultBranch main
+```
+
+### Build Environment Verification
+```bash
+# Check Python installation
+python --version
+python -c "import tkinter; print('Tkinter OK')"
+python -c "import PIL; print('Pillow OK')"
+python -c "import psutil; print('psutil OK')"
+
+# Check build tools (run in ACB)
+git --version
+cmake --version
+mysql --version
+```
+
+## Runtime Dependencies
+
+### Windows Components
+- **Microsoft Visual C++ Redistributable** (latest version)
+- **Windows Defender exclusions** for ACB executable
+- **Administrator privileges** for some operations
+
+### Network Requirements
+- **Internet access** for:
+  - Cloning repositories from GitHub
+  - Downloading dependencies
+  - Fetching module lists
+  - Downloading world database
+- **Firewall exceptions** for:
+  - ACB.exe (for network operations)
+  - git.exe (for repository operations)
+  - MySQL server (if hosting database)
+
+### Disk Space Requirements
+- **ACB Application**: 50 MB
+- **Source Code**: 2-5 GB (depending on modules)
+- **Build Artifacts**: 10-15 GB
+- **World Database**: 2-3 GB
+- **Server Repack**: 5-8 GB
+- **Total Recommended**: 50+ GB free space
+
+## Security Requirements
+
+### User Permissions
+- **Administrator rights** required for:
+  - Installing dependencies
+  - Modifying system paths
+  - Creating firewall exceptions
+  - Accessing protected registry keys
+
+### Antivirus Exclusions
+Add the following to antivirus exclusions:
+- ACB installation directory
+- GitSource directory (for Git operations)
+- Build directory (for compilation)
+- Repack directory (for server files)
+
+### Windows Defender SmartScreen
+- May require "Run anyway" on first execution
+- Consider code signing certificate for distribution
+
+## Platform-Specific Notes
+
+### Windows 10
+- **Minimum Version**: 1809 (October 2018 Update)
+- **Features Used**: Modern file dialogs, process management
+- **Known Issues**: Path length limitations (enable long paths)
+
+### Windows 11
+- **Full Compatibility**: All versions supported
+- **Enhanced Features**: Better process isolation, improved file operations
+- **Recommended**: For best performance and security
+
+### Windows Server
+- **Supported**: Windows Server 2019, 2022
+- **Limitations**: GUI features may be limited in Server Core
+- **Recommendation**: Use Desktop Experience installation
+
+## Compatibility Matrix
+
+| Component | Minimum Version | Recommended | Notes |
+|-----------|----------------|-------------|-------|
+| Python | 3.8 | 3.11+ | Built-in tkinter required |
+| Git | 2.30 | 2.44+ | HTTPS and SSH support |
+| Boost | 1.78.0 | 1.84.0 | Any version in range |
+| MySQL | 8.0 | 8.0.35+ | 5.7 may work but not tested |
+| OpenSSL | 3.0 | 3.5.2+ | Required for secure connections |
+| CMake | 3.20 | 3.28+ | Visual Studio 2022 support |
+| Visual Studio | 2022 | 2022 17.8+ | C++20 support required |
+
+## Troubleshooting Dependencies
+
+### Common Issues
+
+#### Python Import Errors
+```bash
+# Fix: Reinstall Python with tkinter
+# Download from python.org and select "tcl/tk and IDLE"
+```
+
+#### Git Not Found
+```bash
+# Fix: Add Git to PATH
+# Control Panel > System > Advanced > Environment Variables
+# Add C:\Program Files\Git\bin to PATH
+```
+
+#### Boost Detection Failed
+```bash
+# Fix: Install to standard location
+# Extract to C:\local\boost_1_XX_0\
+# Ensure boost subdirectory exists
+```
+
+#### Visual Studio Not Detected
+```bash
+# Fix: Install required workloads
+# Run Visual Studio Installer
+# Select "Desktop development with C++"
+```
+
+#### MySQL Connection Issues
+```bash
+# Fix: Configure MySQL service
+# Services.msc > MySQL80 > Start
+# Check firewall rules for port 3306
+```
+
+### Environment Validation Script
+Create `validate_env.py`:
+```python
+#!/usr/bin/env python3
+"""Validate ACB build environment."""
+
+import sys
+import subprocess
+import os
+from pathlib import Path
+
+def check_python_deps():
+    """Check Python dependencies."""
+    try:
+        import tkinter
+        print("✅ tkinter available")
+    except ImportError:
+        print("❌ tkinter missing")
+        
+    try:
+        import PIL
+        print("✅ Pillow available")
+    except ImportError:
+        print("❌ Pillow missing")
+        
+    try:
+        import psutil
+        print("✅ psutil available")
+    except ImportError:
+        print("❌ psutil missing")
+
+def check_build_tools():
+    """Check build tool availability."""
+    tools = {
+        'git': 'git --version',
+        'cmake': 'cmake --version', 
+        'mysql': 'mysql --version'
+    }
+    
+    for tool, command in tools.items():
+        try:
+            result = subprocess.run(command.split(), 
+                                  capture_output=True, text=True)
+            if result.returncode == 0:
+                print(f"✅ {tool} available")
+            else:
+                print(f"❌ {tool} failed")
+        except FileNotFoundError:
+            print(f"❌ {tool} not found")
+
+if __name__ == "__main__":
+    print("ACB Environment Validation")
+    print("=" * 30)
+    check_python_deps()
+    print()
+    check_build_tools()
+```
+
+Run with: `python validate_env.py`

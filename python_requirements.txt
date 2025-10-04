@@ -1,0 +1,3 @@
+tkinter>=8.6
+Pillow>=8.0.0
+psutil>=5.8.0
